@@ -1,0 +1,297 @@
+load "genfree-codebase-part1.magma";
+
+print "Calculating with exterior power representations in support of Garibaldi-Guralnick II, section 8";
+print "We test the inequality dim x^G + dim V^x < dim V; ";
+print "   when it fails, we report `badness` = dim V - dim V^x - dim x^G";
+
+// take a partition and return a vector counting how many times each entry occurred
+function PartitionToCounts(part);
+	n := &+part;
+	return [
+		#[y : y in part | y eq i] : i in [1..n]
+		];
+end function;
+
+
+// take a partition (presented as a list) and report the size of the conjugacy class in sl_n
+// uses formula from Liebeck-Seitz, p.39
+function ClassSizeA(part);
+	n := &+part;
+
+	// r[i] is the number of Jordan blocks of size i
+	r := PartitionToCounts(part);
+
+	// now we compute the class dimension
+	cdim := n^2; // start with the size of GL_n, we will subtract off the centralizer dimension
+	for i in [1..n] do
+		cdim := cdim - i*r[i]^2;
+		for j in [(i+1)..n] do
+			cdim := cdim - 2*i*r[i]*r[j];
+		end for;
+	end for;
+	return cdim;
+end function;
+
+// apply unit tests to the code
+assert ClassSizeA([2,1,1,1]) eq 8;
+assert ClassSizeA([2,2,1]) eq 12;
+for n in [2..20] do
+	assert ClassSizeA([n]) eq (n^2 - 1 - (n-1)); // the regular nilpotent	
+end for;
+
+
+
+
+// is a given partition the partition for a nilpotent from sp?
+// odd parts occur with even multiplicity
+function IsCPartition(r);
+	for i in [1..#r] do
+		if IsOdd(i) then
+			if IsOdd(r[i]) then
+				return false;
+			end if;
+		end if;
+	end for;
+	return true;
+end function;
+
+
+// take a partition (presented as a list) and report the size of the conjugacy class in sp_n
+// assuming char is odd
+// uses formula from Liebeck-Seitz, p.39
+function ClassSizeC(part);
+	n := &+part;
+	assert IsEven(n);
+	ell := n /2; // the rank of Sp_n
+
+	// r[i] is the number of Jordan blocks of size i
+	r := PartitionToCounts(part);
+
+	// verify that this is a partition for C!  Odd parts have to have even multiplicity
+	assert IsCPartition(r);
+
+	// now we compute the class dimension
+	cdim := Rationals()!2*ell^2 + ell; // start with the size of Sp_n, we will subtract off the centralizer dimension
+	for i in [1..n] do
+		cdim := cdim - i*r[i]^2/2;
+		for j in [(i+1)..n] do
+			cdim := cdim - i*r[i]*r[j];
+		end for;
+		if IsOdd(i) then
+			cdim := cdim - r[i]/2;
+		end if;
+	end for;
+	return cdim;
+
+end function;
+
+
+// make a matrix of size sz, with element elt on the superdiagonal and 1's on the diagonal
+function MakeBlock(sz, elt);
+	M := IdentityMatrix(Parent(elt), sz);
+	for i in [1..(sz-1)] do
+		M[i,i+1] := elt;
+	end for;
+	return M;
+end function;
+
+// given a partition "part" make a nilpotent of the corresponding partition
+function MakeNilpotent(part);
+	R := PolynomialRing(IntegerRing());
+	D := JordanBlock(R.1, part[1]);
+	for i in [2..#part] do
+		D := DiagonalJoin(D, JordanBlock(R.1, part[i]));
+	end for;
+	return D;
+end function;
+
+// given a partition "part" and element "elt" make a unipotent with elt on the superdiagonal
+function MakeUnipotent(part, elt);
+	R := Parent(elt);
+	n := &+part;
+
+	return IdentityMatrix(R, n) + elt*MakeNilpotent(part);
+end function;
+
+// given a partition "part" make a nilpotent with that partition
+// return the matrix for its action on wedge^e of the natural representation
+// computed as matrix of integers
+function MakeExterior(part, e);
+	R := PolynomialRing(IntegerRing());
+	n := &+part;
+
+	nche := Binomial(n,e);
+	A := MatrixAlgebra(R, nche);
+
+	K := FieldOfFractions(R);
+	M := MakeUnipotent(part, K.1);
+	M2 := A!ExteriorPower(M, e);
+	M3 := ZeroMatrix(IntegerRing(), nche, nche);
+	for i in [1..nche] do
+		for j in [1..nche] do
+			M3[i,j] := MonomialCoefficient(M2[i,j], R.1);
+		end for;
+	end for;
+	return M3;
+end function;
+
+//--------------------------------------------------------------------
+section("Computations with sl_n from Proposition 8.1");
+
+
+// for sl_n acting on wedge^e(natural), and each partition of n (i.e., conjugacy class of nilpotents)
+// report dim class, dimensions of the kernel of wedge^e(x) over GF(p) for various p, and the partition of x
+function CheckCaseA(n, e);
+	parts := Partitions(n);
+	Exclude(~parts, [ 1 : i in [1..n]]); // ignore the zero element
+	printf "Examining sl_%o acting on wedge^%o\n", n, e;
+	printf "Will calculate for all primes up to and including %o\n", NextPrime(n*e);
+
+	// set up the list of primes
+	primes := PrimesUpTo(n*e);
+	Append(~primes, NextPrime(n*e));
+	nche := Binomial(n,e);
+
+	classdims := [ ClassSizeA(part) : part in parts]; // classims[i] = dimension of class of parts[i]
+
+	kerdims := [];
+	for part in parts do
+		M := MakeExterior(part, e);
+		Append(~kerdims,
+			[ Dimension(Kernel(ChangeRing(M, GF(p)))) : p in primes ]
+			);
+	end for;
+
+	for i in [1..#primes] do
+		badparts := [];
+		badness := [];
+		for j in [1..#parts] do
+			baditem := classdims[j] + kerdims[j,i] - nche;
+			if baditem ge 0 then
+				Append(~badparts, 
+					[* parts[j], baditem, classdims[j], kerdims[j,i] *]);
+			end if;
+		end for;
+		if badparts eq [] then
+			printf "Prime %o has the inequality for all nonzero nilpotents\n", primes[i];
+		else
+			printf "!!! Inequality fails at prime %o\n", primes[i];
+			for badguy in badparts do
+				printf "    ";
+				print badguy[1];
+				printf " with badness %o; ", badguy[2];
+				printf "    dim x^G = %o ; dim V^x = %o\n\n", badguy[3], badguy[4];
+			end for;
+		end if;
+	end for;
+
+	return classdims, kerdims, parts;
+
+end function;
+
+// type A stuff
+
+for n in [9..16] do
+	printf "********************* Checking wedge^3 for sl_%o\n", n;
+	hide := CheckCaseA(n, 3);
+end for;
+
+print " ========================================================================= ";
+
+for n in [8..10] do
+	printf "********************* Checking wedge^4 for sl_%o\n", n;
+	hide := CheckCaseA(n, 4);
+end for;
+
+
+//--------------------------------------------------------------------
+section("Computations with sp_{2n} from Proposition 8.3");
+
+// for sp_n acting on wedge^e(natural), and each partition of n (i.e., conjugacy class of nilpotents)
+// report dim class in sp, dimensions of the kernel of wedge^e(x) over GF(p) for various p, and the partition of x
+//
+// In some characteristics, wedge^e(natural) contains a copy of the natural representation.  If you want to
+// examine the quotient, set sub_natural := true to make the calculation of the kernel of an element correct 
+// and not just an upper bound.  
+function CheckCaseC(n, e : sub_natural := false);
+	assert IsEven(n);
+	ell := Integers()!n/2;  // the rank of sp_n
+
+	parts := [ part : part in Partitions(n) | IsCPartition(PartitionToCounts(part))];
+	Exclude(~parts, [ 1 : i in [1..n]]);
+	printf "Examining sp_%o acting on wedge^%o\n", n, e;
+	printf "Checking dim x^Sp + dim (wedge^%o)^x ", n;
+	if sub_natural then
+		printf "- dim (k^%o)^x", n;
+    end if;
+    printf " < dim V(omega_%o) for each nilpotent x\n", n/2 - 2;
+
+	// set up the list of primes
+	primes := PrimesUpTo(n*e);
+	Append(~primes, NextPrime(n*e));
+	Exclude(~primes, 2);  // we ignore the prime 2 in all cases
+	if n eq 8 and e eq 3 then  // we ignore the prime 3 for n = 8 
+		Exclude(~primes, 3);
+		printf "Will calculate for all primes up to and including %o except 2 and 3\n", NextPrime(n*e);
+	else 
+		printf "Will calculate for all primes up to and including %o except 2\n", NextPrime(n*e);
+	end if;
+	nche := Binomial(n,e);
+
+	classdims := [ ClassSizeC(part) : part in parts]; // classims[i] = dimension of class of parts[i]
+
+	kerdims := [];
+	for part in parts do
+		M := MakeExterior(part, e);
+		Append(~kerdims,
+			[ Dimension(Kernel(ChangeRing(M, GF(p)))) : p in primes ]
+			);
+	end for;
+
+	for i in [1..#primes] do
+		badparts := [];
+		badness := [];
+		if Integers()!(ell - 1) mod primes[i] eq 0 then
+			target := nche - 2*n; // the bad characteristic setting
+		else
+			target := nche - n;  // the typical case
+		end if;
+
+		for j in [1..#parts] do
+			baditem := classdims[j] + kerdims[j,i] - target; // raw badness
+			// do we need to adjust the badness by replacing dim V^x with dim V^x - dim (k^n)^x
+			if sub_natural then 
+				baditem -:= #(parts[j]);
+			end if;
+			if baditem ge 0 then
+				Append(~badparts, 
+					[* parts[j], baditem, classdims[j], kerdims[j,i] *]);
+			end if;
+		end for;
+
+		if badparts eq [] then
+			printf "Prime %o has the inequality for all nonzero nilpotents with rep of dim %o\n", primes[i], target;
+		else
+			printf "!!! Inequality fails at prime %o\n", primes[i];
+			for badguy in badparts do
+				printf "    ";
+				print badguy[1];
+				printf " with badness %o; for rep of dim %o\n", badguy[2], target;
+				printf "    dim x^G = %o ; dim V^x = %o\n\n", badguy[3], badguy[4];
+			end for;
+		end if;
+	end for;
+
+	return classdims, kerdims, parts;
+
+end function;
+
+print "*********************";
+hide := CheckCaseC(8, 3 : sub_natural := true); // need to subtract off 
+
+print "*********************";
+hide := CheckCaseC(10, 3);
+
+print "*********************";
+hide := CheckCaseC(12, 3);
+

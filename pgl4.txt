@@ -1,0 +1,9 @@
+Magma V2.23-1     Mon Mar 25 2019 17:47:59 on Laptop-18 [Seed = 1520398730]
+Type ? for help.  Type <Ctrl>-D to quit.
+Loading "genfree-codebase-part1.magma"
+Running Magma V2.23-1
+Calculating with PGL_4 in support of Garibaldi-Guralnick II, Example 10.4
+Found a vector in the 24-dimensional representation whose stabilizer in pgl_4 is trivial.
+Therefore the action of pgl_4 is generically free.
+
+Total time: 0.370 seconds, Total memory usage: 32.09MB

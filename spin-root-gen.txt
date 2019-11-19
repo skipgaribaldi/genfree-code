@@ -1,0 +1,17 @@
+Magma V2.23-1     Mon Apr  8 2019 17:49:40 on Laptop-18 [Seed = 116504438]
+Type ? for help.  Type <Ctrl>-D to quit.
+Loading "genfree-codebase-part1.magma"
+Running Magma V2.23-1
+Checking how many conjugates of certain elements of spin_n are needed to generate the Lie algebra
+Base field is finite of characteristic 2
+This is in support of Garibaldi-Guralnick I, Example 10.2
+Checking spin_8 with an element of rank 2 ; do 4 generic conjugates generate?
+true
+Checking spin_10 with an element of rank 2 ; do 5 generic conjugates generate?
+true
+Checking spin_14 with an element of rank 4 ; do 4 generic conjugates generate?
+true
+Checking spin_16 with an element of rank 4 ; do 4 generic conjugates generate?
+true
+
+Total time: 9.779 seconds, Total memory usage: 32.09MB

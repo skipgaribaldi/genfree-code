@@ -1,0 +1,250 @@
+Magma V2.23-1     Tue Apr  9 2019 22:13:48 on Laptop-18 [Seed = 3241207557]
+Type ? for help.  Type <Ctrl>-D to quit.
+Loading "genfree-codebase-part1.magma"
+Running Magma V2.23-1
+Calculating with exterior power representations in support of Garibaldi-Guralnick II, section 8
+We test the inequality dim x^G + dim V^x < dim V; 
+   when it fails, we report `badness` = dim V - dim V^x - dim x^G
++----------------------------------------------------------------------+
+| Computations with sl_n from Proposition 8.1                          |
++----------------------------------------------------------------------+
+
+********************* Checking wedge^3 for sl_9
+Examining sl_9 acting on wedge^3
+Will calculate for all primes up to and including 29
+!!! Inequality fails at prime 2
+    [ 2, 2, 2, 2, 1 ]
+ with badness 0;     dim x^G = 40 ; dim V^x = 44
+
+!!! Inequality fails at prime 3
+    [ 9 ]
+ with badness 0;     dim x^G = 72 ; dim V^x = 12
+
+    [ 3, 3, 3 ]
+ with badness 0;     dim x^G = 54 ; dim V^x = 30
+
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+********************* Checking wedge^3 for sl_10
+Examining sl_10 acting on wedge^3
+Will calculate for all primes up to and including 31
+Prime 2 has the inequality for all nonzero nilpotents
+Prime 3 has the inequality for all nonzero nilpotents
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+Prime 31 has the inequality for all nonzero nilpotents
+********************* Checking wedge^3 for sl_11
+Examining sl_11 acting on wedge^3
+Will calculate for all primes up to and including 37
+Prime 2 has the inequality for all nonzero nilpotents
+Prime 3 has the inequality for all nonzero nilpotents
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+Prime 31 has the inequality for all nonzero nilpotents
+Prime 37 has the inequality for all nonzero nilpotents
+********************* Checking wedge^3 for sl_12
+Examining sl_12 acting on wedge^3
+Will calculate for all primes up to and including 37
+Prime 2 has the inequality for all nonzero nilpotents
+Prime 3 has the inequality for all nonzero nilpotents
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+Prime 31 has the inequality for all nonzero nilpotents
+Prime 37 has the inequality for all nonzero nilpotents
+********************* Checking wedge^3 for sl_13
+Examining sl_13 acting on wedge^3
+Will calculate for all primes up to and including 41
+Prime 2 has the inequality for all nonzero nilpotents
+Prime 3 has the inequality for all nonzero nilpotents
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+Prime 31 has the inequality for all nonzero nilpotents
+Prime 37 has the inequality for all nonzero nilpotents
+Prime 41 has the inequality for all nonzero nilpotents
+********************* Checking wedge^3 for sl_14
+Examining sl_14 acting on wedge^3
+Will calculate for all primes up to and including 43
+Prime 2 has the inequality for all nonzero nilpotents
+Prime 3 has the inequality for all nonzero nilpotents
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+Prime 31 has the inequality for all nonzero nilpotents
+Prime 37 has the inequality for all nonzero nilpotents
+Prime 41 has the inequality for all nonzero nilpotents
+Prime 43 has the inequality for all nonzero nilpotents
+********************* Checking wedge^3 for sl_15
+Examining sl_15 acting on wedge^3
+Will calculate for all primes up to and including 47
+Prime 2 has the inequality for all nonzero nilpotents
+Prime 3 has the inequality for all nonzero nilpotents
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+Prime 31 has the inequality for all nonzero nilpotents
+Prime 37 has the inequality for all nonzero nilpotents
+Prime 41 has the inequality for all nonzero nilpotents
+Prime 43 has the inequality for all nonzero nilpotents
+Prime 47 has the inequality for all nonzero nilpotents
+********************* Checking wedge^3 for sl_16
+Examining sl_16 acting on wedge^3
+Will calculate for all primes up to and including 53
+Prime 2 has the inequality for all nonzero nilpotents
+Prime 3 has the inequality for all nonzero nilpotents
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+Prime 31 has the inequality for all nonzero nilpotents
+Prime 37 has the inequality for all nonzero nilpotents
+Prime 41 has the inequality for all nonzero nilpotents
+Prime 43 has the inequality for all nonzero nilpotents
+Prime 47 has the inequality for all nonzero nilpotents
+Prime 53 has the inequality for all nonzero nilpotents
+ ========================================================================= 
+********************* Checking wedge^4 for sl_8
+Examining sl_8 acting on wedge^4
+Will calculate for all primes up to and including 37
+!!! Inequality fails at prime 2
+    [ 8 ]
+ with badness 0;     dim x^G = 56 ; dim V^x = 14
+
+    [ 4, 4 ]
+ with badness 0;     dim x^G = 48 ; dim V^x = 22
+
+    [ 2, 2, 2, 2 ]
+ with badness 0;     dim x^G = 32 ; dim V^x = 38
+
+Prime 3 has the inequality for all nonzero nilpotents
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+Prime 31 has the inequality for all nonzero nilpotents
+Prime 37 has the inequality for all nonzero nilpotents
+********************* Checking wedge^4 for sl_9
+Examining sl_9 acting on wedge^4
+Will calculate for all primes up to and including 37
+Prime 2 has the inequality for all nonzero nilpotents
+Prime 3 has the inequality for all nonzero nilpotents
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+Prime 31 has the inequality for all nonzero nilpotents
+Prime 37 has the inequality for all nonzero nilpotents
+********************* Checking wedge^4 for sl_10
+Examining sl_10 acting on wedge^4
+Will calculate for all primes up to and including 41
+Prime 2 has the inequality for all nonzero nilpotents
+Prime 3 has the inequality for all nonzero nilpotents
+Prime 5 has the inequality for all nonzero nilpotents
+Prime 7 has the inequality for all nonzero nilpotents
+Prime 11 has the inequality for all nonzero nilpotents
+Prime 13 has the inequality for all nonzero nilpotents
+Prime 17 has the inequality for all nonzero nilpotents
+Prime 19 has the inequality for all nonzero nilpotents
+Prime 23 has the inequality for all nonzero nilpotents
+Prime 29 has the inequality for all nonzero nilpotents
+Prime 31 has the inequality for all nonzero nilpotents
+Prime 37 has the inequality for all nonzero nilpotents
+Prime 41 has the inequality for all nonzero nilpotents
++----------------------------------------------------------------------+
+| Computations with sp_{2n} from Proposition 8.3                       |
++----------------------------------------------------------------------+
+
+*********************
+Examining sp_8 acting on wedge^3
+Checking dim x^Sp + dim (wedge^8)^x - dim (k^8)^x < dim V(omega_2) for each nilpotent x
+Will calculate for all primes up to and including 29 except 2 and 3
+Prime 5 has the inequality for all nonzero nilpotents with rep of dim 48
+Prime 7 has the inequality for all nonzero nilpotents with rep of dim 48
+Prime 11 has the inequality for all nonzero nilpotents with rep of dim 48
+Prime 13 has the inequality for all nonzero nilpotents with rep of dim 48
+Prime 17 has the inequality for all nonzero nilpotents with rep of dim 48
+Prime 19 has the inequality for all nonzero nilpotents with rep of dim 48
+Prime 23 has the inequality for all nonzero nilpotents with rep of dim 48
+Prime 29 has the inequality for all nonzero nilpotents with rep of dim 48
+*********************
+Examining sp_10 acting on wedge^3
+Checking dim x^Sp + dim (wedge^10)^x  < dim V(omega_3) for each nilpotent x
+Will calculate for all primes up to and including 31 except 2
+Prime 3 has the inequality for all nonzero nilpotents with rep of dim 110
+Prime 5 has the inequality for all nonzero nilpotents with rep of dim 110
+Prime 7 has the inequality for all nonzero nilpotents with rep of dim 110
+Prime 11 has the inequality for all nonzero nilpotents with rep of dim 110
+Prime 13 has the inequality for all nonzero nilpotents with rep of dim 110
+Prime 17 has the inequality for all nonzero nilpotents with rep of dim 110
+Prime 19 has the inequality for all nonzero nilpotents with rep of dim 110
+Prime 23 has the inequality for all nonzero nilpotents with rep of dim 110
+Prime 29 has the inequality for all nonzero nilpotents with rep of dim 110
+Prime 31 has the inequality for all nonzero nilpotents with rep of dim 110
+*********************
+Examining sp_12 acting on wedge^3
+Checking dim x^Sp + dim (wedge^12)^x  < dim V(omega_4) for each nilpotent x
+Will calculate for all primes up to and including 37 except 2
+Prime 3 has the inequality for all nonzero nilpotents with rep of dim 208
+Prime 5 has the inequality for all nonzero nilpotents with rep of dim 196
+Prime 7 has the inequality for all nonzero nilpotents with rep of dim 208
+Prime 11 has the inequality for all nonzero nilpotents with rep of dim 208
+Prime 13 has the inequality for all nonzero nilpotents with rep of dim 208
+Prime 17 has the inequality for all nonzero nilpotents with rep of dim 208
+Prime 19 has the inequality for all nonzero nilpotents with rep of dim 208
+Prime 23 has the inequality for all nonzero nilpotents with rep of dim 208
+Prime 29 has the inequality for all nonzero nilpotents with rep of dim 208
+Prime 31 has the inequality for all nonzero nilpotents with rep of dim 208
+Prime 37 has the inequality for all nonzero nilpotents with rep of dim 208
+
+Total time: 216.210 seconds, Total memory usage: 214.53MB

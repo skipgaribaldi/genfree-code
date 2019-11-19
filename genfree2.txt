@@ -1,0 +1,212 @@
+Magma V2.23-1     Wed Apr 10 2019 07:26:22 on Laptop-18 [Seed = 1937953542]
+Type ? for help.  Type <Ctrl>-D to quit.
+Loading "genfree-codebase-part2.magma"
+Loading "genfree-codebase-part1.magma"
+Running Magma V2.23-1
+Testing representations that are examined in Garibaldi-Guralnick II
++----------------------------------------------------------------------+
+| Section 4                                                            |
++----------------------------------------------------------------------+
+
+Testing C4 in char 3 expecting a generic stabilizer of dim 2 for irrep with highest wt [ 0, 0, 1, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 40
+    ... Representation is injective (which is good)
+    ... Putative generic stabilizer has dimension 2 as predicted-- 2 bigger than the kernel
+    ... Putative generic stabilizer is a toral subalgebra
+    ... Centralizer of putative generic stabilizer is toral
+    VERIFIED that V is not generically free, with dim L = 2
+true
++----------------------------------------------------------------------+
+| Section 5                                                            |
++----------------------------------------------------------------------+
+
+Testing B2 in char 5 expecting a generic stabilizer of dim 1 for irrep with highest wt [ 1, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 12
+    ... Representation is injective (which is good)
+    ... Putative generic stabilizer has dimension 1 as predicted-- 1 bigger than the kernel
+    ... Putative generic stabilizer is a toral subalgebra
+    ... Centralizer of putative generic stabilizer is toral
+    VERIFIED that V is not generically free, with dim L = 1
+true
+Testing B2 in char 2 expecting generically free for irrep with highest wt [ 1, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 16
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing B3 in char 2 expecting generically free for irrep with highest wt [ 1, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 48
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing B3 in char 7 expecting generically free for irrep with highest wt [ 1, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 40
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing C5 in char 3 expecting generically free for irrep with highest wt [ 0, 0, 0, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 122
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing D4 in char 2 expecting generically free for irrep with highest wt [ 1, 0, 0, 1 ]
+    ... Neither simply connected nor adjoint ; center has order 2
+    ... Constructed representation of dimension 48
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
++----------------------------------------------------------------------+
+| Section 7                                                            |
++----------------------------------------------------------------------+
+
+Representations from Remark 7.3
+Testing A7 in char 2 expecting a generic stabilizer of dim 3 for irrep with highest wt [ 0, 0, 0, 1, 0, 0, 0 ]
+    ... Neither simply connected nor adjoint ; center has order 2
+    ... Constructed representation of dimension 70
+    ... Representation is injective (which is good)
+    ... Putative generic stabilizer has dimension 3 as predicted-- 3 bigger than the kernel
+    ... Putative generic stabilizer is a toral subalgebra
+    ... Centralizer of putative generic stabilizer is toral
+    VERIFIED that V is not generically free, with dim L = 3
+true
+Testing A8 in char 3 expecting a generic stabilizer of dim 2 for irrep with highest wt [ 0, 0, 1, 0, 0, 0, 0, 0 ]
+    ... Neither simply connected nor adjoint ; center has order 3
+    ... Constructed representation of dimension 84
+    ... Representation is injective (which is good)
+    ... Putative generic stabilizer has dimension 2 as predicted-- 2 bigger than the kernel
+    ... Putative generic stabilizer is a toral subalgebra
+    ... Centralizer of putative generic stabilizer is toral
+    VERIFIED that V is not generically free, with dim L = 2
+true
++----------------------------------------------------------------------+
+| Section 8                                                            |
++----------------------------------------------------------------------+
+
+Representations from Prop. 8.1
+Testing A11 in char 3 expecting generically free for irrep with highest wt [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 ]
+    ... Neither simply connected nor adjoint ; center has order 4
+    ... Constructed representation of dimension 220
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing A14 in char 3 expecting generically free for irrep with highest wt [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+    ... Neither simply connected nor adjoint ; center has order 5
+    ... Constructed representation of dimension 455
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing A9 in char 2 expecting generically free for irrep with highest wt [ 0, 0, 0, 1, 0, 0, 0, 0, 0 ]
+    ... Neither simply connected nor adjoint ; center has order 5
+    ... Constructed representation of dimension 210
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Representations from Prop. 8.3
+Testing C6 in char 5 expecting generically free for irrep with highest wt [ 0, 0, 1, 0, 0, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 196
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
++----------------------------------------------------------------------+
+| Section 9                                                            |
++----------------------------------------------------------------------+
+
+Testing A8 in char 2 expecting generically free for irrep with highest wt [ 0, 0, 1, 0, 0, 0, 0, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 84
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing A3 in char 2 expecting generically free for irrep with highest wt [ 0, 0, 4 ]
+    ... Lie algebra is for the adjoint group
+    ... Constructed representation of dimension 35
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing A3 in char 3 expecting generically free for irrep with highest wt [ 1, 1, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 16
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing A4 in char 3 expecting generically free for irrep with highest wt [ 1, 1, 0, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 30
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing A5 in char 3 expecting generically free for irrep with highest wt [ 1, 1, 0, 0, 0 ]
+    ... Neither simply connected nor adjoint ; center has order 2
+    ... Constructed representation of dimension 50
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing A6 in char 3 expecting generically free for irrep with highest wt [ 1, 1, 0, 0, 0, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 77
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing A7 in char 3 expecting generically free for irrep with highest wt [ 1, 1, 0, 0, 0, 0, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 112
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing A8 in char 3 expecting generically free for irrep with highest wt [ 1, 1, 0, 0, 0, 0, 0, 0 ]
+    ... Neither simply connected nor adjoint ; center has order 3
+    ... Constructed representation of dimension 156
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing A9 in char 3 expecting generically free for irrep with highest wt [ 1, 1, 0, 0, 0, 0, 0, 0, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 210
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing D5 in char 2 expecting generically free for irrep with highest wt [ 0, 0, 1, 0, 0 ]
+    ... Neither simply connected nor adjoint ; center has order 2
+    ... Constructed representation of dimension 100
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing D5 in char 5 expecting generically free for irrep with highest wt [ 1, 0, 0, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 128
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing C3 in char 3 expecting generically free for irrep with highest wt [ 1, 1, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 50
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing C5 in char 3 expecting generically free for irrep with highest wt [ 0, 0, 0, 1, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 121
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
++----------------------------------------------------------------------+
+| Section 10                                                           |
++----------------------------------------------------------------------+
+
+In the following, we verify that a non-faithful representation of SL_4 is virtually free for sl_4
+
+Testing A3 in char 2 expecting generically free for a sum of 4 copies of irrep with highest wt [ 0, 1, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed 4 copies of a representation of dimension 6
+    ... Kernel of the action has dimension 1
+    ---> Putative generic stabilizer has dimension 1, not the predicted 0
+    Representation is VIRTUALLY free
+true
+
+Total time: 1070.279 seconds, Total memory usage: 344.81MB

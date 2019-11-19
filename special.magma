@@ -1,0 +1,84 @@
+/////////////////////////////////////////////////////////////////
+//
+// Magma code for computing (actually, giving upper bound for) the dimension of
+// the generic stabilizer for a Lie algebra acting on an irreducible representation
+//     in support of a paper by Skip Garibaldi & Robert M. Guralnick
+//
+// version of 4/19/17
+//
+/////////////////////////////////////////////////////////////////
+
+load "genfree-codebase-part2.magma";
+
+print "Testing representations that are examined in Garibaldi-Guralnick III";
+
+/*******************************************/
+section("Section 6");
+
+testOne( "G", 2, 3, [2,0], 27, 0 ); 
+
+/*******************************************/
+section("Section 7");
+
+print "Sums of spin representations; all should be generically free";
+
+spinseq := [];
+spinsums := [4, 4, 3, 2, 2];
+for n in [2..6] do
+    copies := spinsums[n-1];
+    high_wt := [0 : i in [1..n]];
+    high_wt[n] := 1;
+    Append(~spinseq, [* "B", n, 2, high_wt, 2^n, 0, "SC", copies *]);
+end for;
+
+testSeq(spinseq);
+
+print "Specific representations for type B";
+Breps :=
+[
+    [* "B", 2, 2, [1,1], 16, 0 *],
+    [* "B", 3, 2, [1,0,1], 48, 0 *],
+    [* "B", 4, 2, [0,0,1,0], 48, 8, "Ad" *], // wedge^3 rep of SO_9
+    [* "B", 5, 2, [0,0,1,0,0], 100, 10, "Ad" *], // wedge^3 rep of SO_11
+    [* "B", 3, 2, [1,0,1], 48, 0 *],
+    [* "B", 3, 2, [1,1,0], 64, 7 *]
+];
+
+testSeq(Breps);
+
+/*******************************************/
+section("Section 8");
+
+print "Testing various representations for type C";
+
+Cspins := [];
+for n in [3..6] do
+    high_wt := [ 0 : i in [1..n]];
+    high_wt[n] := 1;
+    Append(~Cspins, [* "C", n, 2, high_wt, 2^n, 2*n^2 - n - 1 *]);
+    if IsEven(n) then
+        Append(~Cspins, [* "C", n, 2, high_wt, 2^n, 2*n^2 - n - 1, "Ad" *]);
+    end if;
+end for;
+
+testSeq(Cspins);
+
+Creps := [
+    [* "C", 3, 2, [1,0,1], 48, 0, "Ad" *],
+    [* "C", 4, 2, [0,0,1,0], 48, 0 *],
+    [* "C", 5, 2, [0,0,1,0,0], 100, 0 *]
+];
+
+testSeq(Creps);
+
+/*******************************************/
+section("Section 9");
+
+adjreps := [
+    [* "G", 2, 3, [0,1], 7, 7, "SC", 2 *], // 2 copies of G2 adjoint
+    [* "F", 4, 2, [1,0,0,0], 26, 26, "SC", 2 *]  // 2 copies of F4 adjoint
+];
+
+testSeq(adjreps);
+
+

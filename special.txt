@@ -1,0 +1,167 @@
+Magma V2.23-1     Tue Apr  9 2019 22:34:15 on Laptop-18 [Seed = 2038998117]
+Type ? for help.  Type <Ctrl>-D to quit.
+Loading "genfree-codebase-part2.magma"
+Loading "genfree-codebase-part1.magma"
+Running Magma V2.23-1
+Testing representations that are examined in Garibaldi-Guralnick III
++----------------------------------------------------------------------+
+| Section 6                                                            |
++----------------------------------------------------------------------+
+
+Testing G2 in char 3 expecting generically free for irrep with highest wt [ 2, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 27
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
++----------------------------------------------------------------------+
+| Section 7                                                            |
++----------------------------------------------------------------------+
+
+Sums of spin representations; all should be generically free
+Testing B2 in char 2 expecting generically free for a sum of 4 copies of irrep with highest wt [ 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed 4 copies of a representation of dimension 4
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing B3 in char 2 expecting generically free for a sum of 4 copies of irrep with highest wt [ 0, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed 4 copies of a representation of dimension 8
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing B4 in char 2 expecting generically free for a sum of 3 copies of irrep with highest wt [ 0, 0, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed 3 copies of a representation of dimension 16
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing B5 in char 2 expecting generically free for a sum of 2 copies of irrep with highest wt [ 0, 0, 0, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed 2 copies of a representation of dimension 32
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing B6 in char 2 expecting generically free for a sum of 2 copies of irrep with highest wt [ 0, 0, 0, 0, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed 2 copies of a representation of dimension 64
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Specific representations for type B
+Testing B2 in char 2 expecting generically free for irrep with highest wt [ 1, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 16
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing B3 in char 2 expecting generically free for irrep with highest wt [ 1, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 48
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing B4 in char 2 expecting a generic stabilizer of dim 8 for irrep with highest wt [ 0, 0, 1, 0 ]
+    ... Lie algebra is for the adjoint group
+    ... Constructed representation of dimension 48
+    ... Kernel of the action has dimension 8
+    Representation is VIRTUALLY free
+true
+Testing B5 in char 2 expecting a generic stabilizer of dim 10 for irrep with highest wt [ 0, 0, 1, 0, 0 ]
+    ... Lie algebra is for the adjoint group
+    ... Constructed representation of dimension 100
+    ... Kernel of the action has dimension 10
+    Representation is VIRTUALLY free
+true
+Testing B3 in char 2 expecting generically free for irrep with highest wt [ 1, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 48
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing B3 in char 2 expecting a generic stabilizer of dim 7 for irrep with highest wt [ 1, 1, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 64
+    ... Kernel of the action has dimension 7
+    Representation is VIRTUALLY free
+true
++----------------------------------------------------------------------+
+| Section 8                                                            |
++----------------------------------------------------------------------+
+
+Testing various representations for type C
+Testing C3 in char 2 expecting a generic stabilizer of dim 14 for irrep with highest wt [ 0, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 8
+    ... Kernel of the action has dimension 14
+    Representation is VIRTUALLY free
+true
+Testing C4 in char 2 expecting a generic stabilizer of dim 27 for irrep with highest wt [ 0, 0, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 16
+    ... Kernel of the action has dimension 27
+    Representation is VIRTUALLY free
+true
+Testing C4 in char 2 expecting a generic stabilizer of dim 27 for irrep with highest wt [ 0, 0, 0, 1 ]
+    ... Lie algebra is for the adjoint group
+    ... Constructed representation of dimension 16
+    ... Kernel of the action has dimension 26
+    ... Putative generic stabilizer has dimension 27 as predicted-- 1 bigger than the kernel
+    ---> Putative generic stabilizer is not a toral subalgebra; quitting
+false
+Testing C5 in char 2 expecting a generic stabilizer of dim 44 for irrep with highest wt [ 0, 0, 0, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 32
+    ... Kernel of the action has dimension 44
+    Representation is VIRTUALLY free
+true
+Testing C6 in char 2 expecting a generic stabilizer of dim 65 for irrep with highest wt [ 0, 0, 0, 0, 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 64
+    ... Kernel of the action has dimension 65
+    Representation is VIRTUALLY free
+true
+Testing C6 in char 2 expecting a generic stabilizer of dim 65 for irrep with highest wt [ 0, 0, 0, 0, 0, 1 ]
+    ... Lie algebra is for the adjoint group
+    ... Constructed representation of dimension 64
+    ... Kernel of the action has dimension 64
+    ---> Putative generic stabilizer has dimension 64, not the predicted 65
+    Representation is VIRTUALLY free
+true
+Testing C3 in char 2 expecting generically free for irrep with highest wt [ 1, 0, 1 ]
+    ... Lie algebra is for the adjoint group
+    ... Constructed representation of dimension 48
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing C4 in char 2 expecting generically free for irrep with highest wt [ 0, 0, 1, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 48
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
+Testing C5 in char 2 expecting generically free for irrep with highest wt [ 0, 0, 1, 0, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed representation of dimension 100
+    ... Representation is injective (which is good)
+    Representation is GENERICALLY free
+true
++----------------------------------------------------------------------+
+| Section 9                                                            |
++----------------------------------------------------------------------+
+
+Testing G2 in char 3 expecting a generic stabilizer of dim 7 for a sum of 2 copies of irrep with highest wt [ 0, 1 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed 2 copies of a representation of dimension 7
+    ... Kernel of the action has dimension 7
+    Representation is VIRTUALLY free
+true
+Testing F4 in char 2 expecting a generic stabilizer of dim 26 for a sum of 2 copies of irrep with highest wt [ 1, 0, 0, 0 ]
+    ... Lie algebra is for the simply connected group
+    ... Constructed 2 copies of a representation of dimension 26
+    ... Kernel of the action has dimension 26
+    Representation is VIRTUALLY free
+true
+
+Total time: 132.919 seconds, Total memory usage: 96.16MB

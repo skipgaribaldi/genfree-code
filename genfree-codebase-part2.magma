@@ -1,0 +1,224 @@
+/////////////////////////////////////////////////////////////////
+//
+// Magma code for computing (actually, giving upper bound for) the dimension of
+// the generic stabilizer for a Lie algebra acting on an irreducible representation
+//     in support of a paper by Skip Garibaldi & Robert M. Guralnick
+//
+// version of 4/19/17
+//
+/////////////////////////////////////////////////////////////////
+
+load "genfree-codebase-part1.magma";
+
+indent_space := " "^4; // how far to indent indented messages
+info_str := "... "; // how to preface informational strings
+warn_str := "---> "; // how to preface warning strings
+error_str := "---> ERROR ---> "; // preface for an error string
+
+info_prefix := indent_space cat info_str;
+warn_prefix := indent_space cat warn_str;
+error_prefix := indent_space cat error_str;
+
+/////////////////////////////////////////////////////////////////
+//
+// check if the generic stabilizer is as expected and print the result
+//
+// arguments are
+// 		g = Lie algebra
+//		rho = representation
+//		V = vector space on which it acts
+// 		edim_stab = expected dim of generic stabilizer
+//
+// returns
+//		true = everything went as expected
+//		false = something bad happened
+// 
+// CAUTION: note that Magma numbers the roots of the root system as in 
+// Bourbaki, whereas Garibaldi-Guralnick imitates Lubeck's paper
+//
+/////////////////////////////////////////////////////////////////
+
+function testRep(g, rho, V, edim_stab);
+	// calculate (guess) a generic stabilizer
+	gen_stab := genStab(g, rho, V);
+	dim_stab := Dimension(gen_stab);
+
+	// calculate the kernel of the representation
+	ker := KerOfRestrictionOfMap(g, rho, V);
+	assert dim_stab ge Dimension(ker); // compulsive sanity check
+
+	// 
+	if Dimension(ker) eq 0 then
+		print info_prefix cat "Representation is injective (which is good)";
+	else
+		printf info_prefix;
+		printf "Kernel of the action has dimension %o\n", Dimension(ker);
+	end if;
+
+	if dim_stab ne edim_stab then
+		printf warn_prefix;
+		printf "Putative generic stabilizer has dimension %o, not the predicted %o\n", dim_stab, edim_stab;
+	end if;
+
+	if dim_stab eq 0 then
+		print indent_space cat "Representation is GENERICALLY free";
+		return true; // we are happy, return
+	elif dim_stab eq Dimension(ker) then
+		print indent_space cat "Representation is VIRTUALLY free";
+		return true; // we are happy, return
+	else
+		if dim_stab eq edim_stab then
+			printf info_prefix;
+			printf "Putative generic stabilizer has dimension %o as predicted", dim_stab;
+			if dim_stab - Dimension(ker) ne 0 then
+				printf "-- %o bigger than the kernel", dim_stab - Dimension(ker);
+			end if;
+		end if;
+		printf "\n";
+	end if;
+
+	// generic stabilizer was bigger than the kernel, so try to figure out what it is
+	// is the generic stabilizer a toral subalgebra?
+	if not(IsToralSubalgebra(gen_stab : big := g)) then
+		// if the generic stabilizer is not toral then we are not sure what to do
+		print warn_prefix cat "Putative generic stabilizer is not a toral subalgebra; quitting";
+		return false; // not sure what other analysis to do
+	end if;
+
+    // compute centralizer of the generic stabilizer
+	cent_stab := LieCentralizer(g, gen_stab);  // centralizer of the generic stabilizer
+	rk := Dimension(CartanSubalgebra(g)); // the rank of g
+
+	// is the generic stabilizer central?
+	if cent_stab eq g then
+		print info_prefix cat "Putative generic stabilizer is a central subalgebra";
+		return true;
+	end if;
+
+	print info_prefix cat "Putative generic stabilizer is a toral subalgebra";
+
+	// is the centralizer a toral subalgebra?
+	if not(IsToralSubalgebra(cent_stab : big := g)) then
+		print warn_prefix cat "Putative generic stabilizer has non-toral centralizer; quitting";
+		return false; // not sure what other analysis to do 
+	end if;
+	print info_prefix cat "Centralizer of putative generic stabilizer is toral";
+
+	if Dimension(cent_stab) ne rk then
+		printf warn_prefix;
+		printf "Expected centralizer of generic stabilizer to have dimension %o (the rank) but got %o\n", rk, Dimension(cent_stab);
+	end if;
+
+	// note: since L is toral, it is contained in a maximal toral subalgebra
+	// by dimension count, cent_stab must equal the maximal toral subalgebra
+
+	// now we calculate the subspace of V annihilated by L
+	fixed_by_stab := KilledSubspace(gen_stab, rho, V);
+	if (Dimension(g) + Dimension(fixed_by_stab)) eq (Dimension(V) + rk) then
+		printf indent_space;
+		printf "VERIFIED that V is not generically free, with dim L = %o\n", dim_stab;
+		return true;
+	end if;
+
+	print warn_prefix cat "got a numerical conflict";
+	print warn_prefix cat "Dim(g) = ", Dimension(g);
+	print warn_prefix cat "Dim(V^L) = ", Dimension(fixed_by_stab);
+	print warn_prefix cat "Dim(V) = ", Dimension(V);
+	print warn_prefix cat "rk(g) = ", rk;
+	return false;
+end function;	
+
+function testWeight(g, high_wt, edim_rep, edim_stab : copies := 1);
+	weyl, irred := makeIrrep(g, high_wt, edim_rep);
+	printf indent_space cat info_str cat "Constructed ";
+	if copies eq 1 then
+		weyl_n := weyl;
+		irred_n := irred;
+	else
+		weyl_n, irred_n := SumRep(weyl, irred, copies);
+		printf "%o copies of a ", copies;
+	end if;
+	printf "representation of dimension %o\n", Dimension(irred);
+
+	return testRep(g, weyl_n, irred_n, edim_stab);
+end function;
+
+
+/////////////////////////////////////////////////////////////////
+//
+// check if the generic stabilizer is as expected and print the result
+//
+// arguments are
+//     cartan_type (ABCD), rank, characteristic of the field, highest weight, dimension of irrep, expected dim of generic stabilizer
+// 
+// note that the Lie algebra g constructed will be simply connected ; this may affect the expected dimension of the generic stabilizer
+// in case the Lie algebra has a nonzero center
+//
+// CAUTION: note that Magma numbers the roots of the root system as in Bourbaki, whereas Garibaldi-Guralnick imitates Lubeck's paper
+//
+// 
+//
+/////////////////////////////////////////////////////////////////
+function testOne(cartan_type, ell, p, high_wt, edim_rep, edim_stab : iso := "SC", copies := 1);
+	printf "Testing %o%o in char %o expecting ", cartan_type, ell, p;
+	if edim_stab eq 0 then
+		printf "generically free";
+	else
+		printf "a generic stabilizer of dim %o", edim_stab;
+	end if;
+	printf " for ";
+
+	if copies ne 1 then
+		printf "a sum of %o copies of ", copies;
+	end if;
+
+    printf "irrep with highest wt %o\n", high_wt;
+
+	R := IrreducibleRootDatum(cartan_type, ell : Isogeny := iso);
+	g := LieAlgebra(R, GF(p^4)); 
+	printf info_prefix;
+	if IsSimplyConnected(R) then
+		printf "Lie algebra is for the simply connected group\n";
+	elif IsAdjoint(R) then
+		printf "Lie algebra is for the adjoint group\n";
+	else
+		printf "Neither simply connected nor adjoint ; center has order %o\n", Order(IsogenyGroup(R));
+	end if;
+
+	return testWeight(g, high_wt, edim_rep, edim_stab : copies := copies);
+end function;
+
+// a wrapper that takes a list instead, the list can have 6, 7, or 8 elements
+function testOneList(test);
+	cartan_type := test[1];
+	ell := test[2];
+	p := test[3];
+	high_wt := test[4];
+	edim_rep := test[5];
+	edim_stab := test[6];
+	if #test ge 7 then
+		iso := test[7];
+	else
+		iso := "SC";
+	end if;
+	if #test eq 8 then
+		copies := test[8];
+	else
+		copies := 1;
+	end if;
+	return testOne(cartan_type, ell, p, high_wt, edim_rep, edim_stab : iso := iso, copies := copies);
+end function;
+
+// this one takes a sequence of lists
+procedure testSeq(test_suite);
+	for test in test_suite do
+		testOneList(test);
+	end for;
+end procedure;
+
+// test a sum of n copies of representation weyl of g
+procedure testSumRep(g, weyl, irred, n);
+	rho_n, V := SumRep(weyl, irred, n);
+
+	testRep(g, rho_n, V, 0);
+end procedure;
